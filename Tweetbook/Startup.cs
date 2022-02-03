@@ -39,7 +39,7 @@ namespace Tweetbook
                 .AddEntityFrameworkStores<DataContext>();
             services.AddControllersWithViews(); 
 
-            services.AddSwaggerGen(x => { x.SwaggerDoc("v1", new OpenApiInfo {Title = "Tweetbook API", Version = "vw"}); });
+            services.AddSwaggerGen(x => { x.SwaggerDoc("v1", new OpenApiInfo {Title = "Tweetbook API", Version = "v1"}); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,19 +60,11 @@ namespace Tweetbook
             app.UseSwagger(option => { option.RouteTemplate = swaggerOptions.JsonRoute; });
             app.UseSwaggerUI(option => {option.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description);});
 
-
-            
-            
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
-
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
