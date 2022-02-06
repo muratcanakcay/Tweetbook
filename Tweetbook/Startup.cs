@@ -50,7 +50,10 @@ namespace Tweetbook
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
 
             app.UseSwagger(option => { option.RouteTemplate = swaggerOptions.JsonRoute; });
-            app.UseSwaggerUI(option => {option.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description);});
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint(swaggerOptions.UiEndpoint, swaggerOptions.Description);
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -62,8 +65,10 @@ namespace Tweetbook
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                //endpoints.MapRazorPages();
             });
+
+            // add authentication middleware:
+            app.UseAuthentication();
         }
     }
 }
