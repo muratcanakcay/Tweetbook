@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Tweetbook.Options;
+using Tweetbook.Services;
 
 namespace Tweetbook.Installers
 {
@@ -19,6 +20,8 @@ namespace Tweetbook.Installers
             configuration.Bind(nameof(jwtSettings), jwtSettings);
             // register it as singleton because we might want to pick it up later in some other class
             services.AddSingleton(jwtSettings);
+
+            services.AddScoped<IIdentityService, IdentityService>();
 
             services.AddControllersWithViews();
             
