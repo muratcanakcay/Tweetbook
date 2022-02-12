@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Contracts\V1\Requests\" />
+    <Folder Include="Extensions\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
